@@ -129,6 +129,12 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onMapLongClick(@NonNull LatLng latLng) {
                 numGuesses++;
+
+                if (numGuesses == 1) {
+                    // Only count the game as "started" when they make their first guess
+                    ((MainActivity) getActivity()).getUserStats().gameStarted();
+                }
+
                 if (getHaversineDistance(new LatLng(targetLat, targetLong), latLng) < 8) {
                     MapGuess guess = new MapGuess(numGuesses, 1);
                     adapter.addGuess(guess);
@@ -182,9 +188,13 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
     private void finishGame() {
         currentPolygon.remove();
 
+        // Show them the secret location
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(targetLat, targetLong))
                 .title("The secret location"));
+
+        // Update user's stats
+        ((MainActivity) getActivity()).getUserStats().gameCompleted(this.numGuesses);
 
         Toast.makeText(getContext(), "You won!", Toast.LENGTH_SHORT).show();
     }

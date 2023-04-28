@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Practice5</string>
+    <string name="app_name">PA Treasure Hunt</string>
+
+    <string name="nav_game">Game</string>
+    <string name="nav_stats">Stats</string>
+    <string name="nav_help">Help</string>
+
+    <string name="help1">A secret location is hidden within the rectangle</string>
+    <string name="help2">Long click the map inside of the rectangle to make a guess</string>
+    <string name="help3">Your guess will shrink the size of the rectangle</string>
+    <string name="help4">When you guess close enough to the hidden location, you win</string>
+    <string name="help5">Each guess records the percentage by which you reduced the rectangle</string>
+    <string name="help6">Click this button to restart the game:</string>
+
+    <string name="stat_game_started">Games Started</string>
+    <string name="stat_game_completed">Games Completed</string>
+    <string name="stat_average_num_guesses">Average Number of Guesses</string>
+    <string name="stat_best_game">Best Game (guesses)</string>
+    <string name="stat_worst_game">Worst Game (guesses)</string>
 </resources>
