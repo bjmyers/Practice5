@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/dark_blue"
     android:layout_margin="8dp"
     app:cardCornerRadius="4dp">
 
@@ -21,6 +22,7 @@
             android:layout_alignParentLeft="true"
             android:paddingLeft="30dp"
             android:textStyle="bold"
+            android:textColor="@color/gold"
             android:textSize="30sp"/>
 
         <TextView
@@ -31,6 +33,7 @@
             android:layout_alignParentTop="true"
             android:paddingRight="30dp"
             android:textStyle="bold"
+            android:textColor="@color/gold"
             android:textSize="30sp"/>
 
     </RelativeLayout>
