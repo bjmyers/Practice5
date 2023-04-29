@@ -41,6 +41,7 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
     private double maxLong;
     private double targetLat;
     private double targetLong;
+    private boolean gameCompleted;
     private FloatingActionButton floatingButton;
 
     @Nullable
@@ -71,6 +72,7 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
         minLong = -80.5;
         maxLong = -75;
         currentPolygon = null;
+        gameCompleted = false;
 
         Random rand = new Random();
 
@@ -104,6 +106,7 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
         minLong = -80.5;
         maxLong = -75;
         currentPolygon = null;
+        gameCompleted = false;
         Random rand = new Random();
         targetLat = rand.nextDouble() * (maxLat - minLat) + minLat;
         targetLong = rand.nextDouble() * (maxLong - minLong) + minLong;
@@ -128,6 +131,10 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
         googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(@NonNull LatLng latLng) {
+                if (gameCompleted) {
+                    // Don't do anything if the game is already done
+                    return;
+                }
                 numGuesses++;
 
                 if (numGuesses == 1) {
@@ -187,6 +194,7 @@ public class GameFragment extends Fragment implements OnMapReadyCallback {
 
     private void finishGame() {
         currentPolygon.remove();
+        gameCompleted = true;
 
         // Show them the secret location
         googleMap.addMarker(new MarkerOptions()

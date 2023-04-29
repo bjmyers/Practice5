@@ -39,7 +39,7 @@ public class StatsFragment extends Fragment {
         // Update text views based on user stats
         mGamesStarted.setText(String.valueOf(userStats.getGamesStarted()));
         mGamesCompleted.setText(String.valueOf(userStats.getGamesCompleted()));
-        mAvgGuesses.setText(String.valueOf(userStats.getAverageNumGuesses()));
+        mAvgGuesses.setText(String.format("%.2f", userStats.getAverageNumGuesses()));
         if (userStats.getBestGame() == null) {
             mBestGame.setText("N/a");
         }
